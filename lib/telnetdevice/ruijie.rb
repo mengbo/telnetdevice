@@ -17,7 +17,6 @@ module TelnetDevice
       cmd("terminal no length")
       close
     end
-end
 
   end
 
