@@ -12,6 +12,12 @@ module TelnetDevice
       enable(enable_password)
     end
 
+    def exit
+      cmd("end")
+      cmd("terminal no length")
+      close
+    end
+
   end
 
 end

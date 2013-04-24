@@ -25,9 +25,5 @@ module TelnetDevice
       line += cmd("show reload")
     end
 
-    def exit
-      close
-    end
-
   end
 end

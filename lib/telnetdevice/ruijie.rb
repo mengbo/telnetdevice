@@ -12,6 +12,13 @@ module TelnetDevice
       cmd("terminal length 0")
     end
 
+    def exit
+      cmd("end")
+      cmd("terminal no length")
+      close
+    end
+end
+
   end
 
   class Ruijie21 < Ruijie
