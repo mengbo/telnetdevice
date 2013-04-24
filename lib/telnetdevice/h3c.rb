@@ -5,6 +5,10 @@ module TelnetDevice
     def initialize(host, password)
       super(:host => host, :dump_log => "#{host}.log")
       login(password)
+      system_view
+      cmd("user-interface vty 0 4")
+      cmd("screen-length 0")
+      cmd("return")
     end
 
     def ftp_login(server, user = "anonymous", password = "")
@@ -26,6 +30,11 @@ module TelnetDevice
     end
 
     def quit
+      cmd("return")
+      system_view
+      cmd("user-interface vty 0 4")
+      cmd("undo screen-length")
+      cmd("return")
       close
     end
 
