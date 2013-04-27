@@ -38,6 +38,8 @@ module TelnetDevice
       close
     end
 
+    alias_method :exit, :quit
+
   end
 
 end

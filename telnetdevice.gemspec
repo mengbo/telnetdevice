@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
 
   # If you need an executable, add it here
-  # s.executables = ["telnetdevice"]
+  s.executables = ["telnetdevice"]
 
   # If you have C extensions, uncomment this line
   # s.extensions = "ext/extconf.rb"
