@@ -13,7 +13,6 @@ module TelnetDevice
     end
 
     def exit
-      cmd("end")
       cmd("terminal no length")
       close
     end

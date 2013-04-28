@@ -30,7 +30,6 @@ module TelnetDevice
     end
 
     def quit
-      cmd("return")
       system_view
       cmd("user-interface vty 0 4")
       cmd("undo screen-length")
