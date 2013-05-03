@@ -13,7 +13,7 @@ module TelnetDevice
       if options.has_key?(:waittime)
         @waittime = @telnet_options["Waittime"] = options[:waittime]
       else
-        @waittime = @telnet_options["Waittime"] = 1
+        @waittime = @telnet_options["Waittime"] = 3
       end
       @telnet = Net::Telnet.new(@telnet_options)
     end
