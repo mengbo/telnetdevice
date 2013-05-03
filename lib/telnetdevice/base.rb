@@ -8,8 +8,10 @@ module TelnetDevice
       if options.has_key?(:dump_log)
         @dump_log = @telnet_options["Dump_log"] = options[:dump_log]
       end
-      #@prompt = @telnet_options["Prompt"] = /[$%#>\]] *\z/n
-      @prompt = @telnet_options["Prompt"] = /[$%#>\]] */n
+      @prompt = @telnet_options["Prompt"] = /[$%#>\]] *\z/n
+      if options[:prompt]
+        @prompt = options[:prompt]
+      end
       @password_prompt = /[Pp]ass(?:word|phrase)[: ]*\z/n
       if options.has_key?(:waittime)
         @waittime = @telnet_options["Waittime"] = options[:waittime]
