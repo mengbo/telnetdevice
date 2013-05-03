@@ -10,7 +10,7 @@ module TelnetDevice
       end
       @prompt = @telnet_options["Prompt"] = /[$%#>\]] *\z/n
       if options[:prompt]
-        @prompt = options[:prompt]
+        @prompt = @telnet_options["Prompt"] = options[:prompt]
       end
       @password_prompt = /[Pp]ass(?:word|phrase)[: ]*\z/n
       if options.has_key?(:waittime)

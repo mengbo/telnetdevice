@@ -3,7 +3,7 @@ require "telnetdevice/base"
 module TelnetDevice
   class H3C < Base
     def initialize(host, password)
-      super(:host => host, :dump_log => "#{host}.log", :prompt => /[>\]] *\z/n)
+      super(:host => host, :dump_log => "#{host}.log", :prompt => /[>\]] *\a*\z/n)
       login(password)
       system_view
       cmd("user-interface vty 0 4")
