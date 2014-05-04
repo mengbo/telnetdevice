@@ -8,6 +8,6 @@ ip = ARGV[0]
 password = ARGV[1]
 device = TelnetDevice::CISCO.new(ip, password) 
 
-device.cmd("show logging"){ |c| print c }
+device.cmd("show startup-config"){ |c| print c }
 puts
 device.exit
