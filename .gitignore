@@ -2,7 +2,7 @@
 .ruby-gemset
 
 Gemfile.lock
-/.bundle
+.bundle/install.log
 /vendor/bundle
 
 *.gem
