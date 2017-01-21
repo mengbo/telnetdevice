@@ -9,5 +9,4 @@
 /tmp/
 
 /vendor/bundler
-*.gem
 *.log
