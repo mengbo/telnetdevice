@@ -1,10 +1,13 @@
-.ruby-version
-.ruby-gemset
+/.bundle/
+/.yardoc
+/Gemfile.lock
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
 
-Gemfile.lock
-.bundle/install.log
-/vendor/bundle
-
+/vendor/bundler
 *.gem
-
 *.log

@@ -1,30 +1,28 @@
-require File.expand_path("../lib/telnetdevice/version", __FILE__)
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
 
-Gem::Specification.new do |s|
-  s.name        = 'telnetdevice'
-  s.version     = TelnetDevice::VERSION
-  s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Meng Bo"]
-  s.email       = 'mengbo@lnu.edu.cn'
-  s.homepage    = "https://github.com/mengbo/telnetdevice"
-  s.summary     = "Ruby telnet tool."
-  s.description = "Ruby telnet tool, for CISCO/Ruijie/H3C network deivce."
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'telnetdevice/version'
 
-  s.required_rubygems_version = ">= 1.3.6"
+Gem::Specification.new do |spec|
+  spec.name          = "telnetdevice"
+  spec.version       = TelnetDevice::VERSION
+  spec.authors       = ["Meng Bo"]
+  spec.email         = ["mengbo@lnu.edu.cn"]
 
-  # lol - required for validation
-  s.rubyforge_project         = "telnetdevice"
+  spec.summary       = %q{Ruby telnet tool.}
+  spec.description   = %q{Ruby telnet tool, for CISCO/Ruijie/H3C network deivce.}
+  spec.homepage      = "https://github.com/mengbo/telnetdevic"
 
-  # If you have other dependencies, add them here
-  # s.add_dependency "another", "~> 1.2"
+  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
+    f.match(%r{^(test|spec|features)/})
+  end
+  spec.bindir        = "exe"
+  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.require_paths = ["lib"]
 
-  # If you need to check in files that aren't .rb files, add them here
-  s.files        = Dir["{lib}/**/*.rb", "bin/*", "example/*", "*.md"]
-  s.require_path = 'lib'
+  spec.add_dependency "net-telnet", "~> 0.1.1"
 
-  # If you need an executable, add it here
-  s.executables = ["telnetdevice"]
-
-  # If you have C extensions, uncomment this line
-  # s.extensions = "ext/extconf.rb"
+  spec.add_development_dependency "bundler", "~> 1.13"
+  spec.add_development_dependency "rake", "~> 10.0"
 end

@@ -1,0 +1,95 @@
+#!/usr/bin/env ruby
+
+HELP = <<EOF
+== Synopsis
+
+telnetdevice: Telnet device and run command. 
+
+== Usage
+
+telnetdevice [OPTION] device-ip
+
+-h, --help:
+   show help
+
+--command c, -c c
+   command string to run
+
+--manufacturer m, -m m
+   device manufacturer
+   should be cisco or ruijie or h3c
+   default is ruijie
+
+--password p, -p p
+   password string
+
+device-ip: Device ip address
+
+== Examples
+
+telnetdevice -m cisco -p password -c "show run" 10.0.0.1
+   Telnet cisco device ip 10.0.0.1 password is "password",
+   run "show run" command.
+
+== Author and license
+   Written by MengBo
+   Distributed under the same license as Ruby is
+EOF
+
+
+require 'telnetdevice'
+
+require 'getoptlong'
+
+opts = GetoptLong.new(
+  [ '--help', '-h', GetoptLong::NO_ARGUMENT ],
+  [ '--command', '-c', GetoptLong::REQUIRED_ARGUMENT ],
+  [ '--manufacturer', '-m', GetoptLong::REQUIRED_ARGUMENT ],
+  [ '--password', '-p', GetoptLong::REQUIRED_ARGUMENT ]
+)
+
+command = ""
+manufacturer = "ruijie"
+password = ""
+
+begin
+  opts.each do |opt, arg|
+    case opt
+    when '--help'
+      puts HELP
+      exit
+    when '--command'
+      command = arg
+    when '--manufacturer'
+      manufacturer = arg
+    when '--password'
+      password = arg
+    else
+      puts HELP
+    end
+  end
+rescue #=> err
+  #puts "#{err.class()}: #{err.message}"
+  puts
+  puts HELP
+  exit
+end
+
+if ARGV.length != 1
+  print "\nMissing device-ip argument (try --help)\n\n"
+  exit 0
+end
+
+ip = ARGV.shift
+
+case manufacturer
+when 'cisco'
+  device = TelnetDevice::CISCO.new(ip, password)
+when 'h3c'
+  device = TelnetDevice::H3C.new(ip, password)
+else
+  device = TelnetDevice::Ruijie.new(ip, password)
+end
+
+puts device.cmd(command)
+device.exit
