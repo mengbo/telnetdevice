@@ -7,7 +7,7 @@ Ruby telnet tool, for CISCO/Ruijie/H3C network deivce.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "telnetdevice", :git => "git://github.com/mengbo/telnetdevice.git"
+gem "telnetdevice", :git => "https://github.com/mengbo/telnetdevice.git"
 ```
 
 And then execute:
